@@ -19,14 +19,6 @@ require "stimulus_reflex/broadcasters/page_broadcaster"
 require "stimulus_reflex/broadcasters/selector_broadcaster"
 
 module StimulusReflex
-  # Parent channel class for StimulusReflex channels.
-  mattr_accessor :parent_channel
-  @@parent_channel = "ApplicationCable::Channel"
-
-  def self.setup
-    yield self
-  end
-
   class Engine < Rails::Engine
     initializer "stimulus_reflex.sanity_check" do
       SanityChecker.check!

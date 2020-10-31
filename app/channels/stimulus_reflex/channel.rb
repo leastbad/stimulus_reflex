@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class StimulusReflex::Channel < StimulusReflex.parent_channel.constantize
+class StimulusReflex::Channel < StimulusReflex.configuration.parent_channel.constantize
   def stream_name
     ids = connection.identifiers.map { |identifier| send(identifier).try(:id) || send(identifier) }
     [
