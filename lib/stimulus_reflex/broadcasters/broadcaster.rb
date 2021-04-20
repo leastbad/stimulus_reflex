@@ -40,6 +40,10 @@ module StimulusReflex
       cable_ready.broadcast
     end
 
+    def default_html_without_format
+      Nokogiri::XML::Node::SaveOptions::DEFAULT_HTML & ~Nokogiri::XML::Node::SaveOptions::FORMAT
+    end
+
     # abstract method to be implemented by subclasses
     def broadcast(*args)
       raise NotImplementedError
