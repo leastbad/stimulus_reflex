@@ -17,7 +17,7 @@ module StimulusReflex
             operations << [selector, :morph]
             cable_ready.morph(
               selector: selector,
-              html: match.inner_html(save_with: default_html_without_format),
+              html: match.inner_html(save_with: 70),
               payload: payload,
               children_only: true,
               permanent_attribute_name: permanent_attribute_name,

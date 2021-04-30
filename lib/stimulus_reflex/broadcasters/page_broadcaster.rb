@@ -12,7 +12,7 @@ module StimulusReflex
       selectors = selectors.select { |s| document.css(s).present? }
       selectors.each do |selector|
         operations << [selector, :morph]
-        html = document.css(selector).inner_html(save_with: default_html_without_format)
+        html = document.css(selector).inner_html(save_with: 70)
         cable_ready.morph(
           selector: selector,
           html: html,
