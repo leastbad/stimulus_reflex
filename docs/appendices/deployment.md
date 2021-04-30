@@ -91,6 +91,14 @@ If you plan to use the paid "Premium" tier Heroku Redis addons, they use Redis 6
 heroku addons:create heroku-redis:premium-0 --version 5
 ```
 
+### Build packs
+
+Generally, only the `heroku/ruby` buildpack is required to successfully deploy a StimulusReflex app on Heroku. However, if you see the error:
+
+`(WARNING: Can't locate the stimulus_reflex npm package [...])`
+
+... we recommend that you try updating your Cedar stack to the latest version. This should be fixed as of Cedar-20.
+
 ## Cloudflare DNS
 
 Cloudflare's infrastructure is nothing short of impressive, and they are a great choice for free DNS hosting. However, the default behaviour of their DNS product is to proxy all traffic to your domain. **This includes websocket traffic.**

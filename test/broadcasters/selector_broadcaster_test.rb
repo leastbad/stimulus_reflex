@@ -53,6 +53,7 @@ module StimulusReflex
         }
       }
 
+
       assert_broadcast_on @reflex.stream_name, expected do
         broadcaster.broadcast nil, some: :data
       end
