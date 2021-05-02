@@ -25,11 +25,11 @@ class StimulusReflex::Element < OpenStruct
     @attributes ||= OpenStruct.new(attrs.merge(attrs.transform_keys(&:underscore)))
   end
 
-  alias_method :data_attributes, :dataset
-
   def dataset
     @dataset ||= OpenStruct.new(data_attrs.merge(data_attrs.transform_keys(&:underscore)))
   end
+
+  alias_method :data_attributes, :dataset
 
   private
 
