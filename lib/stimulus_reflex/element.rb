@@ -9,7 +9,7 @@ class StimulusReflex::Element < OpenStruct
     regualar_dataset = datasets["dataset"] || {}
     @data_attrs = build_data_attrs(regualar_dataset, datasets["datasetArray"] || {})
     all_attributes = @attrs.merge(@data_attrs)
-    super all_attributes.merge(all_attributes.transform_keys(&:underscore))
+    super build_underscored(all_attributes)
     @data_attrs.transform_keys! { |key| key.delete_prefix "data-" }
   end
 
@@ -22,11 +22,11 @@ class StimulusReflex::Element < OpenStruct
   end
 
   def attributes
-    @attributes ||= OpenStruct.new(attrs.merge(attrs.transform_keys(&:underscore)))
+    @attributes ||= OpenStruct.new(build_underscored(attrs))
   end
 
   def dataset
-    @dataset ||= OpenStruct.new(data_attrs.merge(data_attrs.transform_keys(&:underscore)))
+    @dataset ||= OpenStruct.new(build_underscored(data_attrs))
   end
 
   alias_method :data_attributes, :dataset
@@ -41,5 +41,9 @@ class StimulusReflex::Element < OpenStruct
     data_attrs = dataset.merge(dataset_array)
 
     HashWithIndifferentAccess.new(data_attrs || {})
+  end
+
+  def build_underscored(attrs)
+    attrs.merge(attrs.transform_keys(&:underscore))
   end
 end
